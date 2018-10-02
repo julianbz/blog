@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Mi blog{% endblock %}</title>
+        {% block stylesheets %}
+
+          <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+          <!-- Bootstrap 3.3.7 -->
+          <link rel="stylesheet" href="{{ asset('asset/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+          <!-- Font Awesome -->
+          <link rel="stylesheet" href="{{ asset('asset/bower_components/font-awesome/css/font-awesome.min.css') }}">
+          <!-- Ionicons -->
+          <link rel="stylesheet" href="{{ asset('asset/bower_components/Ionicons/css/ionicons.min.css') }}">
+          <!-- bootstrap datepicker -->
+          <!-- Theme style -->
+          <link rel="stylesheet" href="{{ asset('asset/dist/css/AdminLTE.min.css') }}">
+          <link rel="stylesheet" href="{{ asset('asset/dist/css/skins/_all-skins.min.css') }}">
+
+          <link rel="stylesheet"
+                href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+        {% endblock %}
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <header class="main-header">
+            <a class="logo" href="/">
+                <span class="logo-mini">
+                    <b>Mi</b>
+                    Blog
+                </span>
+                <span class="logo-lg">
+                    <b>Mi</b>
+                    Blog
+                </span>
+            </a>
+            <nav class="navbar navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <i class="fa fa-bars"></i>
+              </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li>
+                  <form class="" action="{{ path('post_new') }}" method="post">
+                    <input type="submit" style="margin:4px;padding:10px;"  class="btn btn-danger btn-block" value="Crear post!">
+                  </form>
+                </li>
+              </ul>
+            </div>
+              </ul>
+            </div>
+            <!-- /.navbar-custom-menu -->
+          </div>
+          <!-- /.container-fluid -->
+        </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu" data-widget="tree">
+                  <li class="treeview" style="margin-right:10px;">
+                    <br>
+                    <form class="" action="{{ path('category_new') }}" method="post">
+                      <input type="submit" style="margin:0px 5px 0px 5px;"  class="btn btn-success btn-block" value="Agregar categoria">
+                    </form>
+                  </li>
+                  <br>
+
+                    <li class="header">
+
+                     <h4>CATEGORIAS</h3>
+
+                    </li>
+                    {% for category in categories %}
+                      <li class="treeview">
+                          <a href="{{ path('category_show', { 'id': category.id }) }}">
+                              <i class="fa fa-circle-o"></i>
+                              <span>{{ category.name }}</span>
+
+                          </a>
+
+                      </li>
+                    {% endfor %}
+
+                </ul>
+            </section>
+        </aside>
+
+
+        <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+
+
+          <!-- Main content -->
+          <section class="content">
+
+            <!-- SELECT2 EXAMPLE -->
+
+
+            <div class="row">
+
+
+            </div>
+
+
+          {% block body %}
+
+            {% include 'post/index.html.twig' %}
+
+
+          {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

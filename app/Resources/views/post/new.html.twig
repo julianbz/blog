@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+      <div class="row">
+
+        <!-- /.col (left) -->
+        <div class="col-md-6">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Crear post</h3>
+            </div>
+            <div class="box-body">
+              {{ form_start(form) }}
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Titulo:</label>
+                  {{ form_widget(form.title, { 'attr': {'class': 'form-control', 'placeholder': 'Ingrese  titulo'|trans } }) }}
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Contenido:</label>
+                  {{ form_widget(form.content, { 'attr': {'class': 'form-control', 'placeholder': 'Ingrese contenido'|trans } }) }}
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Categoria:</label>
+                      {{ form_widget(form.category, { 'attr': {'class': 'form-control','required':'true', 'placeholder': 'Seleccione'|trans } }) }}
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Creado por:</label>
+                      {{ form_widget(form.postedBy, { 'attr': {'class': 'form-control', 'placeholder': 'Ingrese  su nombre'|trans } }) }}
+              </div>
+
+              {{form_rest(form)}}
+
+              <p>
+              {{form_errors(form)}}
+              </p>
+              <div class="box-footer">
+                  <input class="btn btn-block btn-success" type="submit" value="Crear" />
+                  <a class="btn btn-block btn-warning" href="{{ path('post_index') }}">Volver a la lista</a>
+
+                  <br>
+              </div>
+              {{ form_end(form) }}
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}
