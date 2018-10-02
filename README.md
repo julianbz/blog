@@ -1,4 +1,0 @@
-blog
-====
-
-A Symfony project
